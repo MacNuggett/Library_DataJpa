@@ -10,6 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,14 +68,14 @@ public class BooksService {
         return book;
     }
 
-    public Person getPerson(int personId){
-        return peopleService.findOne(personId);
-    }
-
     public List<Book> getBooks(int personId){
         Person owner = peopleService.findOne(personId);
-        System.out.println(owner);
-        return owner.getBooks();
+        List<Book> books = owner.getBooks();
+        for(Book book: books){
+            book.setOverDated(book.getCreatedAt().isBefore(LocalDate.now().minusDays(10)));
+            System.out.println(book.getOverDated());
+        }
+        return books;
     }
 
     public void save(Book book){
@@ -88,6 +90,7 @@ public class BooksService {
     public void updatePerson(int personId, int bookId){
         Book book = findOne(bookId);
         book.setOwner(peopleService.findOne(personId));
+        book.setCreatedAt(LocalDate.now());
         booksRepository.save(book);
     }
 

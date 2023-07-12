@@ -81,8 +81,8 @@
     <p th:case="0">Пользователь пока не взял ни одной книги</p>
     <div th:case="*">
         <h4>Книги:</h4>
-        <div th:each="book: ${books}">
-            <a th:text="${book.getTitle()+', '+book.getYear()}" th:href = "@{/books/{id}(id=${book.getId()})}">book</a>
+        <div th:style="${book.getOverDated()}? 'color:red':'color:#008000'" th:each="book: ${books}">
+            <a th:style="${book.getOverDated()}? 'color:red':'color:#008000'" th:text="${book.getTitle()+', '+book.getYear()}" th:href = "@{/books/{id}(id=${book.getId()})}">book</a>
         </div>
     </div>
 </div>

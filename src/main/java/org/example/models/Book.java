@@ -4,6 +4,9 @@ package org.example.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
 @Table(name = "Book")
 public class Book {
@@ -31,6 +34,13 @@ public class Book {
     @Min(value = 1, message = "Неверная дата")
     @Column(name = "year")
     private int year;
+
+    @Column(name = "created_at")
+    @Temporal(TemporalType.DATE)
+    private LocalDate createdAt;
+
+    @Transient
+   private Boolean isOverDated;
 
     public Book(String title, String author, int year) {
         this.title = title;
@@ -78,6 +88,22 @@ public class Book {
 
     public void setOwner(Person owner) {
         this.owner = owner;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Boolean getOverDated() {
+        return isOverDated;
+    }
+
+    public void setOverDated(Boolean overDated) {
+        isOverDated = overDated;
     }
 
     @Override
