@@ -10,7 +10,7 @@ public class BookMapper implements RowMapper<Book> {
     public Book mapRow(ResultSet rs, int i) throws SQLException {
         Book book = new Book();
         book.setId(rs.getInt("id"));
-        book.setPersonId(rs.getInt("personid"));
+        book.getOwner().setId(rs.getInt("personid"));
         book.setAuthor(rs.getString("author"));
         book.setTitle(rs.getString("title"));
         book.setYear(rs.getInt("year"));

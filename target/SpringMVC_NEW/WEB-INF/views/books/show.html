@@ -50,7 +50,7 @@
     input[type="submit"] {
       display: inline-block;
       margin-top: 10px;
-      padding: 10px 20px;
+      padding: 5px 20px;
       border: 2px solid #008000;
       border-radius: 5px;
       background-color: #ffffff;
@@ -96,7 +96,8 @@
     <input type="submit" value="Назначить"/>
   </form>
   <form th:case="*" th:method="DELETE" th:action="@{/books/{id}/delete_person(id=${book.getId()})}">
-    <p th:text="${'Книга сейчас у: '+oneperson.getName()}"></p>
+    <p>Книгу взял(а): </p>
+    <p th:text="${oneperson.getName()}"></p>
     <input type="submit" value="Освободить книгу"/>
   </form>
 </div>
