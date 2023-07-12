@@ -1,5 +1,5 @@
 **Задачи:**
-1) Переписать [Проект 1]([url](https://github.com/MacNuggett/Spring-Library)) с использованием Hibernate и Spring Data JPA. В вашем
+Переписать [Проект 1]([url](https://github.com/MacNuggett/Spring-Library)) с использованием Hibernate и Spring Data JPA. В вашем
 проекте не должно быть ни одного SQL запроса. Должны быть реализованы
 сущности (@Entity) Книга и Человек, репозитории и сервисы. PersonDAO и
 BookDAO должны быть пустыми и не должны использоваться, вся работа с БД
